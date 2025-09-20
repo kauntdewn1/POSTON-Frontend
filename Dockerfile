@@ -1,45 +1,39 @@
-# 🧛‍♂️ POSTØN Space - Dockerfile para Hugging Face Spaces
-FROM python:3.9
+# 🧛‍♂️ POSTØN Space - Dockerfile simplificado para Hugging Face
+FROM python:3.9-slim
 
 # Instalar dependências do sistema
 RUN apt-get update && apt-get install -y \
-    build-essential \
     curl \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Instalar Node.js
+# Instalar Node.js 18
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y nodejs
 
 # Configurar diretório de trabalho
 WORKDIR /app
 
-# Copiar requirements.txt
+# Copiar e instalar dependências Python
 COPY requirements.txt .
-
-# Instalar dependências Python
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar código da aplicação
 COPY app.py .
 
-# Criar arquivo .env com configurações padrão
+# Criar arquivo .env
 RUN echo "HF_API_TOKEN=your_huggingface_token_here" > .env && \
     echo "PORT=7860" >> .env && \
     echo "NODE_ENV=development" >> .env
 
-# Copiar e buildar frontend
-COPY frontend/package*.json ./frontend/
-WORKDIR /app/frontend
-RUN npm install
+# Build do frontend
+COPY frontend/package*.json ./
+RUN npm install --production
 COPY frontend/ ./
 RUN npm run build
 
-# Voltar para diretório raiz e copiar dist
-WORKDIR /app
-RUN cp -r ./frontend/dist ./dist
+# Copiar dist para diretório raiz
+RUN cp -r ./dist /app/dist
 
 # Expor porta
 EXPOSE 7860
