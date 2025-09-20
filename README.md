@@ -1,5 +1,5 @@
 ---
-title: POSTØN Space - Visual System
+title: poston
 emoji: 🧛‍♂️
 colorFrom: purple
 colorTo: blue
