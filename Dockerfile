@@ -27,13 +27,15 @@ RUN echo "HF_API_TOKEN=your_huggingface_token_here" > .env && \
     echo "NODE_ENV=development" >> .env
 
 # Build do frontend
+WORKDIR /app/frontend
 COPY frontend/package*.json ./
-RUN npm install --production
+RUN npm install
 COPY frontend/ ./
 RUN npm run build
 
-# Copiar dist para diretório raiz
-RUN cp -r ./dist /app/dist
+# Voltar para diretório raiz e copiar dist
+WORKDIR /app
+RUN cp -r ./frontend/dist ./dist
 
 # Expor porta
 EXPOSE 7860
