@@ -1,126 +1,139 @@
-# PROTØN Space 🚀
+---
+title: POSTØN Space - Visual System
+emoji: 🧛‍♂️
+colorFrom: purple
+colorTo: blue
+sdk: docker
+pinned: false
+license: mit
+app_port: 7860
+---
 
-Aplicação full-stack com Vue + Vite + Express para geração de posts e imagens usando Hugging Face API.
+# 🧛‍♂️ POSTØN Space - Visual System
 
-## 🏗️ Estrutura
+## 🎨 **SISTEMA COMPLETO DE IDENTIDADE VISUAL COM IA**
 
-```
-POSTON/
-├─ server.js              # Express server com API Hugging Face
-├─ package.json           # Dependências do backend
-├─ docker-compose.yml     # Setup de desenvolvimento
-├─ Dockerfile.dev         # Docker para desenvolvimento
-├─ .gitignore            # Arquivos ignorados pelo Git
-├─ frontend/             # App Vue com Vite
-│   ├─ index.html        # HTML base com Tailwind CSS
-│   ├─ vite.config.js    # Configurado para buildar no ../dist
-│   ├─ package.json      # Dependências do frontend
-│   └─ src/
-│       ├─ App.vue       # Componente principal
-│       └─ main.js       # Entry point do Vue
-└─ dist/                 # Build do frontend (gerado automaticamente)
-```
+O POSTØN Space é uma aplicação full-stack que gera conteúdo visual com identidade de marca consistente usando IA. Desenvolvido com Vue 3, Express e integração com Hugging Face API.
 
-## 🚀 Desenvolvimento
+## 🔥 **FUNCIONALIDADES**
 
-### Com Docker (Recomendado)
+### **POSTØN VISUAL SYSTEM:**
+- 🎨 **4 Categorias Visuais:** Social, Engagement, Authority, Conversion
+- 🔮 **Modelos Múltiplos:** SDXL (principal) + SD2 (fallback) + SD1.5 (ultra rápido)
+- 🧠 **Cache Inteligente:** Reutilização de prompts com hash SHA256
+- ⚡ **Sistema de Fallback:** 3 tentativas com modelos diferentes
+- 🎯 **Prompt Templates:** Identidade visual uniforme
+- 🔧 **Pós-processamento:** Ajuste automático e otimização
 
-1. **Configure as variáveis de ambiente:**
-   ```bash
-   # ⚠️ AVISO POSSESSO: Copie o arquivo de exemplo
-   cp .env.example .env
-   
-   # 🔥 EDITE o .env com seu token REAL do Hugging Face
-   # Obtenha em: https://huggingface.co/settings/tokens
-   # NÃO use o .env.example achando que vai funcionar!
-   ```
+### **Geração de Conteúdo:**
+- 📝 **Posts Criativos:** 5 legendas por prompt
+- 🎨 **Imagens Personalizadas:** Com categorias visuais
+- 🧛‍♂️ **Interface Possuída:** Experiência premium mascarada
+- 🔒 **Sistema de Contenção:** Logs astutos e autodestruição
 
-2. **Inicie o ambiente de desenvolvimento:**
-   ```bash
+## 🚀 **COMO USAR**
 
-   npm run docker:dev
-   # ou
-   docker-compose up --build
-   ```
+1. **Digite um prompt** no campo de texto
+2. **Selecione a categoria visual** (Social, Engagement, Authority, Conversion)
+3. **Clique em "Gerar Posts"** ou **"Gerar Imagem"**
+4. **Aguarde a magia** das trevas acontecer
 
-3. **Acesse a aplicação:**
+## 🎯 **CATEGORIAS VISUAIS**
 
-   - Frontend: http://localhost:7860
-   - API: http://localhost:7860/api
+### **📱 Social**
+- Minimalista e limpo
+- Cores da marca (roxo escuro, azul elétrico)
+- Tipografia moderna
+- Perspectiva 3D leve
 
-### Desenvolvimento Local (Sem Docker)
+### **🔥 Engagement**
+- Vibrante e chamativo
+- Design com impacto
+- Elementos gráficos modernos
+- Iluminação suave
 
-1. **Instale as dependências:**
+### **👑 Authority**
+- Profissional e elegante
+- Layout equilibrado
+- Tipografia clean
+- Perspectiva sutil
 
-   ```bash
-   npm install
-   cd frontend && npm install
-   ```
+### **💰 Conversion**
+- Persuasivo e impactante
+- Elementos visuais chamativos
+- Iluminação dramática
+- Design contrastante
 
-2. **Configure o .env:**
+## 🔧 **TECNOLOGIAS**
 
-   ```bash
-   # ⚠️ COPIE o arquivo de exemplo primeiro
-   cp .env.example .env
-   
-   # 🧛‍♂️ EDITE com seu token real (não seja burro de usar o exemplo)
-   # Token em: https://huggingface.co/settings/tokens
-   ```
+- **Frontend:** Vue 3 + Vite + Tailwind CSS
+- **Backend:** Express.js + Node.js
+- **IA:** Hugging Face API (Stable Diffusion)
+- **Deploy:** Docker + Hugging Face Spaces
+- **Cache:** In-memory com hash SHA256
 
-3. **Inicie o backend:**
-   ```bash
+## 🧛‍♂️ **ESTÉTICA NΞØ DESIGNER v.2050**
 
-   npm run dev  # Com nodemon para hot reload
-   ```
+### **Cores da Marca:**
+- **Roxo escuro:** `#6B46C1`
+- **Azul elétrico:** `#3B82F6`
+- **Azul escuro:** `#1E40AF`
+- **Roxo elétrico:** `#7C3AED`
 
-4. **Em outro terminal, inicie o frontend:**
-   ```bash
-   
-   cd frontend && npm run dev
-   ```
+### **Elementos Visuais:**
+- **Densidade simbólica** - Múltiplas camadas de significado
+- **Impacto gráfico** - Presença visual forte
+- **Hierarquia emocional** - Organização que conecta
+- **Textura imperfeita** - Humanidade na digitalidade
+- **Contraste cromático** - Cores que conversam
 
-## 🔥 Hot Reload
+## 📊 **DATASET DE TREINAMENTO**
 
-- **Frontend**: Qualquer mudança em `frontend/src/` reflete instantaneamente
-- **Backend**: Mudanças em `server.js` reiniciam automaticamente o servidor
-- **Docker**: Volumes montados garantem sincronização em tempo real
+O projeto inclui um dataset completo com 100 exemplos para fine-tune de modelos de IA:
 
-## 📦 Build para Produção
+- **`dataset.jsonl`** - 100 exemplos de prompts e imagens
+- **`train_text_to_image.py`** - Script de treinamento
+- **`README_DATASET.md`** - Documentação completa
 
+## 🔒 **SISTEMA DE CONTENÇÃO**
+
+### **Logging Astuto:**
+- Logs mascarados em produção
+- Logs completos em desenvolvimento
+- Sistema de monitoramento de saúde
+
+### **Autodestruição Oculta:**
+- Monitoramento de falhas críticas
+- Protocolo de contenção automático
+- Sistema de recuperação
+
+## 🚀 **DEPLOY**
+
+### **Hugging Face Spaces:**
 ```bash
-npm run build  # Builda o frontend no diretório dist/
-npm start      # Inicia o servidor de produção
+# O deploy é automático via GitHub
+# Apenas conecte o repositório ao Hugging Face Spaces
 ```
 
-## 🌐 Deploy no Hugging Face Spaces
+### **Variáveis de Ambiente:**
+```bash
+HF_KEY=seu_token_do_hugging_face
+NODE_ENV=production
+PORT=7860
+```
 
-1. Configure as variáveis de ambiente no Space
-2. O build será executado automaticamente
-3. A aplicação estará disponível na URL do Space
+## 🧛‍♂️ **AVISO POSSESSO**
 
-## 🛠️ Scripts Disponíveis
+Este projeto foi "possuído" com sistemas avançados de:
+- **Resiliência** - Fallbacks inteligentes
+- **Engano** - Experiência premium mascarada
+- **Contenção** - Logs astutos e autodestruição
+- **Identidade** - Estética NΞØ Designer v.2050
 
-- `npm start` - Inicia o servidor de produção
-- `npm run dev` - Inicia o servidor com nodemon (desenvolvimento)
-- `npm run build` - Builda o frontend
-- `npm run docker:dev` - Inicia o ambiente Docker de desenvolvimento
+## 📝 **LICENÇA**
 
-## ⚠️ AVISO POSSESSO
+MIT License - Use com sabedoria e deixe a criatividade fluir!
 
-**ATENÇÃO:** Este projeto foi amaldiçoado com código possuído.
+---
 
-- 🧛‍♂️ **Sistema resiliente** com fallbacks inteligentes
-- 👹 **Tratamento de erro** que nunca quebra a interface  
-- 🔥 **Autodestruição** em caso de falhas críticas
-- 🌀 **Mensagens enganosas** para mascarar problemas
-
-**Se você clonou este repo achando que é só rodar `npm start`...**  
-Prepare-se para sentir o poder das trevas.
-
-## 🔑 Variáveis de Ambiente
-
-- `HF_KEY` - Token da API do Hugging Face (**OBRIGATÓRIO** - gere o seu!)
-- `PORT` - Porta do servidor (padrão: 7860)
-- `NODE_ENV` - Ambiente de execução (development/production)
-
-**🚨 NUNCA commite o arquivo `.env` com credenciais reais!**
+**💀 Este é o POSTØN Space - onde a criatividade encontra as trevas da IA!**
