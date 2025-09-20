@@ -1,0 +1,13 @@
+FROM node:18
+
+WORKDIR /app
+
+# Copia package.json
+COPY package.json package-lock.json* ./
+
+RUN npm install -g nodemon && npm install
+
+# Copia tudo pro container
+COPY . .
+
+EXPOSE 7860

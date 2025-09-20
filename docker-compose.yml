@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  poston-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: poston-api
+    ports:
+      - "7860:7860"
+      - "5173:5173"  # Porta do Vite dev server
+    environment:
+      - HF_KEY=${HF_KEY}
+    volumes:
+      - ./server.js:/app/server.js
+      - ./frontend:/app/frontend
+      - ./dist:/app/dist
+      - /app/node_modules
+    command: sh -c "mkdir -p /app/dist && cd frontend && npm install && npm run dev & nodemon server.js"
