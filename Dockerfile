@@ -21,7 +21,7 @@ COPY app.py .
 # Criar arquivo .env com configurações padrão
 RUN echo "HF_API_TOKEN=your_huggingface_token_here" > .env && \
     echo "PORT=7860" >> .env && \
-    echo "NODE_ENV=de" >> .envlop
+    echo "NODE_ENV=development" >> .env
 
 # Configurar diretório do frontend
 WORKDIR /app/frontend
