@@ -17,7 +17,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar código da aplicação
 COPY app.py .
-COPY .env.example ./.env
+
+# Criar arquivo .env com configurações padrão
+RUN echo "HF_API_TOKEN=your_huggingface_token_here" > .env && \
+    echo "PORT=7860" >> .env && \
+    echo "NODE_ENV=de" >> .envlop
 
 # Configurar diretório do frontend
 WORKDIR /app/frontend
