@@ -1,6 +1,7 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const path = require("path");
+const crypto = require("crypto");
 require("dotenv").config();
 
 const app = express();
@@ -33,18 +34,50 @@ if (process.env.NODE_ENV === "production") {
 
 const HF_KEY = process.env.HF_KEY;
 const TEXT_MODEL = "gpt2"; // Modelo público
-const IMAGE_MODEL = "stabilityai/stable-diffusion-2"; // Modelo público
 
-// Log de inicialização
-console.log("🔑 HF_KEY configurado:", HF_KEY ? "✅ Sim" : "❌ Não");
-console.log("🔑 HF_KEY formato:", HF_KEY ? `${HF_KEY.substring(0, 8)}...` : "não definida");
-console.log("🔑 HF_KEY tipo:", typeof HF_KEY);
-console.log("🔑 HF_KEY length:", HF_KEY ? HF_KEY.length : 0);
-console.log("🤖 Modelo de texto:", TEXT_MODEL);
-console.log("🎨 Modelo de imagem:", IMAGE_MODEL);
+// 🎨 POSTØN VISUAL SYSTEM - Modelos de IA
+const VISUAL_MODELS = {
+  PRIMARY: "stabilityai/stable-diffusion-xl-base-1.0", // High fidelity
+  FALLBACK: "stabilityai/stable-diffusion-2", // Rápido e leve
+  ULTRA_FAST: "runwayml/stable-diffusion-v1-5" // Emergência
+};
+
+// 🧠 CACHE INTELIGENTE - Reuso de prompts
+const imageCache = new Map();
+const CACHE_MAX_SIZE = 1000;
+
+// 🔮 PROMPT TEMPLATES - Identidade visual consistente
+const PROMPT_TEMPLATES = {
+  SOCIAL: "Estilo minimalista, fundo branco, cores da marca (roxo escuro #6B46C1, azul elétrico #3B82F6), fonte moderna, perspectiva 3D leve, luz natural suave, sem ruído, centralizado, {prompt}",
+  
+  ENGAGEMENT: "Design vibrante, fundo gradiente sutil, cores da marca (roxo escuro #6B46C1, azul elétrico #3B82F6), tipografia bold, elementos gráficos modernos, perspectiva 3D, iluminação suave, sem ruído, centralizado, {prompt}",
+  
+  AUTHORITY: "Estilo profissional, fundo neutro, cores da marca (roxo escuro #6B46C1, azul elétrico #3B82F6), tipografia clean, layout equilibrado, perspectiva sutil, iluminação natural, sem ruído, centralizado, {prompt}",
+  
+  CONVERSION: "Design persuasivo, fundo contrastante, cores da marca (roxo escuro #6B46C1, azul elétrico #3B82F6), tipografia impactante, elementos visuais chamativos, perspectiva 3D, iluminação dramática, sem ruído, centralizado, {prompt}"
+};
+
+// 🧛‍♂️ Função para gerar hash do prompt (cache inteligente)
+function generatePromptHash(prompt, category = 'SOCIAL') {
+  const template = PROMPT_TEMPLATES[category] || PROMPT_TEMPLATES.SOCIAL;
+  const fullPrompt = template.replace('{prompt}', prompt);
+  return crypto.createHash("sha256").update(fullPrompt).digest("hex");
+}
+
+// 🎨 Função para pós-processamento automático
+function postProcessImage(base64Image, prompt, category) {
+  // Aqui você pode adicionar:
+  // - Ajuste de contraste
+  // - Adição de logo POSTØN
+  // - Conversão para WebP/AVIF
+  // - Otimização de tamanho
+  
+  console.log(`🎨 Pós-processando imagem para: ${prompt} (${category})`);
+  return base64Image; // Por enquanto, retorna sem modificação
+}
 
 // 💀 Função possuída com timeout e retry
-const TIMEOUT_MS = 8000;
+const TIMEOUT_MS = 12000; // Aumentado para SDXL
 const MAX_RETRIES = 2;
 
 async function queryPossuida(model, payload, isImage = false, tentativa = 1) {
@@ -73,7 +106,7 @@ async function queryPossuida(model, payload, isImage = false, tentativa = 1) {
     if (response.status === 429) {
       console.warn("⚠️ Rate limit atingido, aguardando...");
       if (tentativa <= MAX_RETRIES) {
-        await new Promise(resolve => setTimeout(resolve, 2000 * tentativa)); // Backoff exponencial
+        await new Promise(resolve => setTimeout(resolve, 3000 * tentativa)); // Backoff exponencial
         return queryPossuida(model, payload, isImage, tentativa + 1);
       }
       throw new Error("Rate limit excedido após múltiplas tentativas");
@@ -85,7 +118,7 @@ async function queryPossuida(model, payload, isImage = false, tentativa = 1) {
       if (errorData.error && errorData.error.includes("loading")) {
         console.warn("⏳ Modelo carregando, aguardando...");
         if (tentativa <= MAX_RETRIES) {
-          await new Promise(resolve => setTimeout(resolve, 5000)); // Aguardar modelo carregar
+          await new Promise(resolve => setTimeout(resolve, 8000)); // Aguardar modelo carregar
           return queryPossuida(model, payload, isImage, tentativa + 1);
         }
       }
@@ -100,14 +133,16 @@ async function queryPossuida(model, payload, isImage = false, tentativa = 1) {
       return { 
         success: true, 
         data: Buffer.from(buffer).toString("base64"),
-        tentativas: tentativa 
+        tentativas: tentativa,
+        model: model
       };
     } else {
       const data = await response.json();
       return { 
         success: true, 
         data: data,
-        tentativas: tentativa 
+        tentativas: tentativa,
+        model: model
       };
     }
 
@@ -117,7 +152,7 @@ async function queryPossuida(model, payload, isImage = false, tentativa = 1) {
     // Retry em caso de timeout ou erro de rede
     if ((err.name === 'AbortError' || err.message.includes('fetch')) && tentativa <= MAX_RETRIES) {
       console.warn(`🔄 Retry ${tentativa}/${MAX_RETRIES} após erro:`, err.message);
-      await new Promise(resolve => setTimeout(resolve, 1000 * tentativa));
+      await new Promise(resolve => setTimeout(resolve, 2000 * tentativa));
       return queryPossuida(model, payload, isImage, tentativa + 1);
     }
 
@@ -187,10 +222,10 @@ app.post("/api/posts", async (req, res) => {
   }
 });
 
-// 🎨 Rota possuída para imagens
+// 🎨 Rota possuída para imagens - POSTØN VISUAL SYSTEM
 app.post("/api/image", async (req, res) => {
-  const { prompt } = req.body;
-  console.log("🎨 Materializando imagem das sombras para:", prompt);
+  const { prompt, category = 'SOCIAL' } = req.body;
+  console.log("🎨 Materializando imagem das sombras para:", prompt, `(${category})`);
   
   try {
     // Validação básica
@@ -198,30 +233,97 @@ app.post("/api/image", async (req, res) => {
       return res.status(400).json({ error: "Prompt vazio não materializa nada das trevas" });
     }
 
+    // 🧠 CACHE INTELIGENTE - Verificar se já foi gerado
+    const promptHash = generatePromptHash(prompt, category);
+    if (imageCache.has(promptHash)) {
+      console.log("🧠 Cache hit! Reutilizando imagem existente");
+      const cachedImage = imageCache.get(promptHash);
+      return res.json({ 
+        image: cachedImage,
+        cached: true,
+        model: 'cached',
+        category: category
+      });
+    }
+
     // Tentar API possuída do Hugging Face primeiro
     if (HF_KEY && HF_KEY !== "seu_token_aqui") {
-      console.log("🔑 Invocando HF com token das sombras:", HF_KEY.substring(0, 8) + "...");
+      const template = PROMPT_TEMPLATES[category] || PROMPT_TEMPLATES.SOCIAL;
+      const fullPrompt = template.replace('{prompt}', prompt);
       
-      const resultado = await queryPossuida("stabilityai/stable-diffusion-2", { 
-        inputs: `${prompt}, digital art, high quality, detailed` 
+      console.log("🔑 Invocando HF com prompt template:", fullPrompt.substring(0, 100) + "...");
+      
+      // Tentar modelo principal primeiro
+      let resultado = await queryPossuida(VISUAL_MODELS.PRIMARY, { 
+        inputs: fullPrompt,
+        parameters: {
+          num_inference_steps: 20,
+          guidance_scale: 7.5,
+          width: 1024,
+          height: 1024
+        }
       }, true);
 
+      // Se falhar, tentar fallback
+      if (!resultado.success) {
+        console.warn("💀 Modelo principal falhou, tentando fallback...");
+        resultado = await queryPossuida(VISUAL_MODELS.FALLBACK, { 
+          inputs: fullPrompt,
+          parameters: {
+            num_inference_steps: 15,
+            guidance_scale: 7.0,
+            width: 512,
+            height: 512
+          }
+        }, true);
+      }
+
+      // Se ainda falhar, tentar ultra rápido
+      if (!resultado.success) {
+        console.warn("💀 Fallback falhou, tentando ultra rápido...");
+        resultado = await queryPossuida(VISUAL_MODELS.ULTRA_FAST, { 
+          inputs: fullPrompt,
+          parameters: {
+            num_inference_steps: 10,
+            guidance_scale: 6.0,
+            width: 512,
+            height: 512
+          }
+        }, true);
+      }
+
       if (resultado.success) {
-        console.log(`✅ Imagem materializada via HF (${resultado.tentativas} tentativas)`);
-        return res.json({ image: `data:image/png;base64,${resultado.data}` });
+        // 🎨 PÓS-PROCESSAMENTO AUTOMÁTICO
+        const processedImage = postProcessImage(resultado.data, prompt, category);
+        
+        // 🧠 CACHE INTELIGENTE - Salvar no cache
+        if (imageCache.size >= CACHE_MAX_SIZE) {
+          // Remover o mais antigo
+          const firstKey = imageCache.keys().next().value;
+          imageCache.delete(firstKey);
+        }
+        imageCache.set(promptHash, processedImage);
+        
+        console.log(`✅ Imagem materializada via HF (${resultado.tentativas} tentativas, modelo: ${resultado.model})`);
+        return res.json({ 
+          image: `data:image/png;base64,${processedImage}`,
+          cached: false,
+          model: resultado.model,
+          category: category
+        });
       } else {
-        console.warn("💀 HF API possuída, materializando das trevas locais");
+        console.warn("💀 Todos os modelos HF falharam, materializando das trevas locais");
       }
     }
 
     // 👹 Fallback melhorado - SVG das trevas
-    const coresTrevas = ['#1a1a2e', '#16213e', '#0f3460', '#533483'];
+    const coresTrevas = ['#6B46C1', '#3B82F6', '#1E40AF', '#7C3AED'];
     const corTexto = ['#00d4ff', '#ff6b6b', '#4ecdc4', '#45b7d1'];
     const corFundo = coresTrevas[Math.floor(Math.random() * coresTrevas.length)];
     const corPrincipal = corTexto[Math.floor(Math.random() * corTexto.length)];
     
     const svgDasTrevas = `
-      <svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+      <svg width="1024" height="1024" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="grad1" cx="50%" cy="50%" r="50%">
             <stop offset="0%" style="stop-color:${corFundo};stop-opacity:1" />
@@ -235,27 +337,38 @@ app.post("/api/image", async (req, res) => {
             </feMerge>
           </filter>
         </defs>
-        <rect width="512" height="512" fill="url(#grad1)"/>
-        <circle cx="256" cy="200" r="80" fill="none" stroke="${corPrincipal}" stroke-width="2" opacity="0.3"/>
-        <circle cx="256" cy="200" r="60" fill="none" stroke="${corPrincipal}" stroke-width="1" opacity="0.5"/>
-        <text x="256" y="210" text-anchor="middle" fill="${corPrincipal}" font-family="Arial Black" font-size="18" filter="url(#glow)">
-          ${prompt.toUpperCase().substring(0, 20)}
+        <rect width="1024" height="1024" fill="url(#grad1)"/>
+        <circle cx="512" cy="400" r="120" fill="none" stroke="${corPrincipal}" stroke-width="3" opacity="0.3"/>
+        <circle cx="512" cy="400" r="80" fill="none" stroke="${corPrincipal}" stroke-width="2" opacity="0.5"/>
+        <text x="512" y="420" text-anchor="middle" fill="${corPrincipal}" font-family="Arial Black" font-size="32" filter="url(#glow)">
+          ${prompt.toUpperCase().substring(0, 30)}
         </text>
-        <text x="256" y="320" text-anchor="middle" fill="#666" font-family="Arial" font-size="14">
+        <text x="512" y="600" text-anchor="middle" fill="#666" font-family="Arial" font-size="24">
           MATERIALIZADO DAS TREVAS
         </text>
-        <text x="256" y="340" text-anchor="middle" fill="${corPrincipal}" font-family="Arial" font-size="16" font-weight="bold">
-          POSTØN SPACE
+        <text x="512" y="640" text-anchor="middle" fill="${corPrincipal}" font-family="Arial" font-size="28" font-weight="bold">
+          POSTØN VISUAL SYSTEM
         </text>
-        <polygon points="256,120 276,160 236,160" fill="${corPrincipal}" opacity="0.7"/>
-        <polygon points="256,280 236,320 276,320" fill="${corPrincipal}" opacity="0.7"/>
+        <text x="512" y="680" text-anchor="middle" fill="#999" font-family="Arial" font-size="18">
+          ${category} - ${new Date().toLocaleString()}
+        </text>
+        <polygon points="512,280 540,360 484,360" fill="${corPrincipal}" opacity="0.7"/>
+        <polygon points="512,520 484,600 540,600" fill="${corPrincipal}" opacity="0.7"/>
       </svg>
     `;
     
     const placeholderImage = "data:image/svg+xml;base64," + Buffer.from(svgDasTrevas).toString('base64');
     
+    // 🧠 CACHE INTELIGENTE - Salvar fallback no cache também
+    imageCache.set(promptHash, placeholderImage);
+    
     console.log("✅ Imagem das trevas materializada (fallback)");
-    res.json({ image: placeholderImage });
+    res.json({ 
+      image: placeholderImage,
+      cached: false,
+      model: 'fallback',
+      category: category
+    });
     
   } catch (err) {
     console.error("💀 Erro fatal na materialização:", err.message);
@@ -264,12 +377,6 @@ app.post("/api/image", async (req, res) => {
       details: process.env.NODE_ENV === 'development' ? err.message : undefined 
     });
   }
-});
-
-// Servindo o build do Vue
-app.use(express.static(path.join(__dirname, "dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 // 🔥 SELO 3: Sistema de autodestruição oculta
@@ -307,10 +414,18 @@ app.use((req, res, next) => {
   next();
 });
 
+// Servindo o build do Vue
+app.use(express.static(path.join(__dirname, "dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
+
 const PORT = process.env.PORT || 7860;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 POSTØN Space rodando na porta ${PORT}`);
   console.log('🔒 Sistema de contenção ativo');
+  console.log('🎨 POSTØN VISUAL SYSTEM ativado');
+  console.log(`🧠 Cache de imagens: ${imageCache.size} entradas`);
   
   // Reset contador de falhas a cada hora (sistema de recuperação)
   setInterval(() => {
