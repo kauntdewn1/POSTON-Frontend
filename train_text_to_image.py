@@ -268,21 +268,22 @@ def train_model(
 
 def main():
     parser = argparse.ArgumentParser(description="Treina modelo NΞØ Designer v.2050")
-    parser.add_argument("--dataset_path", type=str, required=True, help="Caminho para dataset.jsonl")
-    parser.add_argument("--output_dir", type=str, required=True, help="Diretório de saída")
-    parser.add_argument("--num_epochs", type=int, default=10, help="Número de épocas")
-    parser.add_argument("--batch_size", type=int, default=1, help="Tamanho do batch")
-    parser.add_argument("--learning_rate", type=float, default=1e-5, help="Taxa de aprendizado")
-    parser.add_argument("--image_size", type=int, default=512, help="Tamanho da imagem")
-    parser.add_argument("--max_train_steps", type=int, default=1000, help="Máximo de steps")
+    parser.add_argument("--dataset_name", type=str, default="./dataset.jsonl", help="Caminho para dataset.jsonl")
+    parser.add_argument("--model_name_or_path", type=str, default="runwayml/stable-diffusion-v1-5", help="Modelo base")
+    parser.add_argument("--output_dir", type=str, default="./n3o-model", help="Diretório de saída")
+    parser.add_argument("--resolution", type=int, default=512, help="Resolução da imagem")
+    parser.add_argument("--train_batch_size", type=int, default=4, help="Tamanho do batch de treino")
+    parser.add_argument("--num_train_epochs", type=int, default=10, help="Número de épocas")
+    parser.add_argument("--checkpointing_steps", type=int, default=500, help="Steps para checkpoint")
+    parser.add_argument("--learning_rate", type=float, default=5e-6, help="Taxa de aprendizado")
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1, help="Steps de acumulação")
     parser.add_argument("--mixed_precision", type=str, default="fp16", help="Precisão mista")
     
     args = parser.parse_args()
     
     # Verificar se dataset existe
-    if not os.path.exists(args.dataset_path):
-        logger.error(f"❌ Dataset não encontrado: {args.dataset_path}")
+    if not os.path.exists(args.dataset_name):
+        logger.error(f"❌ Dataset não encontrado: {args.dataset_name}")
         return
     
     # Criar diretório de saída
@@ -290,13 +291,13 @@ def main():
     
     # Treinar modelo
     train_model(
-        dataset_path=args.dataset_path,
+        dataset_path=args.dataset_name,
         output_dir=args.output_dir,
-        num_epochs=args.num_epochs,
-        batch_size=args.batch_size,
+        num_epochs=args.num_train_epochs,
+        batch_size=args.train_batch_size,
         learning_rate=args.learning_rate,
-        image_size=args.image_size,
-        max_train_steps=args.max_train_steps,
+        image_size=args.resolution,
+        max_train_steps=args.num_train_epochs * 100,  # Estimativa
         gradient_accumulation_steps=args.gradient_accumulation_steps,
         mixed_precision=args.mixed_precision
     )
