@@ -1,5 +1,5 @@
 # 🧛‍♂️ POSTØN Space - Dockerfile com ComfyUI para Hugging Face
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # Instalar dependências do sistema
 RUN apt-get update && apt-get install -y \
@@ -16,8 +16,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-# Instalar Node.js 18
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+# Instalar Node.js 22 LTS
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get install -y nodejs
 
 # Configurar diretório de trabalho
