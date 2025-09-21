@@ -1,0 +1,73 @@
+{
+    "last_node_id": 6,
+    "last_link_id": 6,
+    "nodes": [
+      {
+        "id": 1,
+        "type": "LoadCheckpoint",
+        "position": [0, 0],
+        "outputs": ["MODEL", "CLIP", "VAE"],
+        "properties": {"ckpt_name": "sd_xl_base_1.0.safetensors"}
+      },
+      {
+        "id": 2,
+        "type": "CLIPTextEncode",
+        "position": [0, 250],
+        "inputs": {"clip": 1, "text": "Poster estético com composição editorial, textura imperfeita, contraste emocional, estilo NΞØ Designer v.2050."},
+        "outputs": ["CONDITIONING"]
+      },
+      {
+        "id": 3,
+        "type": "EmptyLatentImage",
+        "position": [250, 0],
+        "outputs": ["LATENT"],
+        "properties": {"width": 768, "height": 1024}
+      },
+      {
+        "id": 4,
+        "type": "KSampler",
+        "position": [500, 0],
+        "inputs": {
+          "model": 1,
+          "positive": 2,
+          "latent_image": 3
+        },
+        "outputs": ["LATENT"],
+        "properties": {
+          "steps": 28,
+          "cfg": 7,
+          "sampler_name": "euler",
+          "seed": 1337
+        }
+      },
+      {
+        "id": 5,
+        "type": "VAEDecode",
+        "position": [750, 0],
+        "inputs": {
+          "vae": 1,
+          "samples": 4
+        },
+        "outputs": ["IMAGE"]
+      },
+      {
+        "id": 6,
+        "type": "PreviewImage",
+        "position": [1000, 0],
+        "inputs": {
+          "images": 5
+        },
+        "outputs": []
+      }
+    ],
+    "links": [
+      [1, 0, 2, 0],
+      [1, 0, 4, 0],
+      [2, 0, 4, 1],
+      [3, 0, 4, 2],
+      [4, 0, 5, 1],
+      [1, 2, 5, 0],
+      [5, 0, 6, 0]
+    ]
+  }
+  

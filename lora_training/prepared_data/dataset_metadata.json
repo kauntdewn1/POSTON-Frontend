@@ -1,0 +1,720 @@
+{
+  "dataset_name": "POSTØN LoRA Training Dataset",
+  "total_images": 71,
+  "processed_images": 71,
+  "errors": 0,
+  "resolution": "1024x1024",
+  "format": "RGB",
+  "images": [
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_37_57.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores desaturadas tons neutros baixo contraste conteúdo gerado por IA estilo matinal estilo artístico com formas orgânicas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_37_57.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1625042
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_36_14.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons esverdeados baixo contraste conteúdo gerado por IA estilo matinal estilo artístico com formas orgânicas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_36_14.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1785936
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_38_38.png",
+      "caption": "Imagem gerada por IA mostrando imagem panorâmica resolução média imagem escura cores saturadas tons esverdeados baixo contraste conteúdo gerado por IA estilo matinal estilo moderno com elementos geométricos, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_38_38.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1988175
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_35_50.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem escura cores moderadas tons azulados alto contraste conteúdo gerado por IA estilo matinal estilo minimalista com linhas definidas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_35_50.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2254105
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_37_41.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores moderadas tons esverdeados contraste médio conteúdo gerado por IA estilo matinal estilo elegante com composição única, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_37_41.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1680543
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_40_18.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros baixo contraste conteúdo gerado por IA estilo matinal tardio estilo artístico com formas orgânicas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_40_18.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1933615
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_36_39.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores desaturadas tons neutros baixo contraste conteúdo gerado por IA estilo matinal estilo criativo com detalhes refinados, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_36_39.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1760473
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_36_59.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores desaturadas tons neutros alto contraste conteúdo gerado por IA estilo matinal estilo elegante com composição única, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_36_59.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1564280
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_34_50.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores desaturadas tons neutros baixo contraste conteúdo gerado por IA estilo matinal estilo minimalista com linhas definidas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_34_50.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1668336
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_37_29.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons azulados baixo contraste conteúdo gerado por IA estilo matinal estilo minimalista com linhas definidas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_37_29.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1893084
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_35_39.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem muito escura cores muito saturadas tons vermelhos dominantes alto contraste conteúdo gerado por IA estilo matinal estilo elegante com composição única, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_35_39.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2240950
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_39_01.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores muito saturadas tons avermelhados baixo contraste conteúdo gerado por IA estilo matinal estilo artístico com formas orgânicas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_39_01.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2079055
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_35_01.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores moderadas tons azulados contraste médio conteúdo gerado por IA estilo matinal estilo elegante com composição única, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_35_01.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1878687
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_38_54.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons avermelhados baixo contraste conteúdo gerado por IA estilo matinal estilo moderno com elementos geométricos, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_38_54.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1271903
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_37_11.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons neutros contraste médio conteúdo gerado por IA estilo matinal estilo minimalista com linhas definidas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_37_11.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2237281
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_37_49.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores muito saturadas tons azulados baixo contraste conteúdo gerado por IA estilo matinal estilo minimalista com linhas definidas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_37_49.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1489961
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_38_31.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons azulados baixo contraste conteúdo gerado por IA estilo matinal estilo moderno com elementos geométricos, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_38_31.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1786005
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_38_09.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores moderadas tons azulados baixo contraste conteúdo gerado por IA estilo matinal estilo minimalista com linhas definidas, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_38_09.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1588310
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_38_21.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons azulados baixo contraste conteúdo gerado por IA estilo matinal estilo criativo com detalhes refinados, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_38_21.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1805877
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_34_36.png",
+      "caption": "Imagem gerada por IA mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons azulados baixo contraste conteúdo gerado por IA estilo matinal estilo criativo com detalhes refinados, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_34_36.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1741091
+    },
+    {
+      "image_path": "images/ChatGPT Image 21 de set. de 2025, 08_34_23.png",
+      "caption": "Imagem gerada por IA mostrando imagem vertical resolução média imagem escura cores desaturadas tons neutros baixo contraste conteúdo gerado por IA estilo matinal estilo elegante com composição única, estilo digital moderno",
+      "original_path": "../data/train/ChatGPT Image 21 de set. de 2025, 08_34_23.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1196096
+    },
+    {
+      "image_path": "images/IMG_9742.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons azulados alto contraste fotografia composição equilibrada estilo profissional com elementos abstratos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9742.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1329154
+    },
+    {
+      "image_path": "images/IMG_9756.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem clara cores saturadas tons avermelhados contraste médio fotografia composição dinâmica estilo clássico com texturas suaves, capturada digitalmente",
+      "original_path": "../data/train/IMG_9756.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1787795
+    },
+    {
+      "image_path": "images/IMG_9781.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons azulados baixo contraste fotografia composição equilibrada estilo profissional com elementos abstratos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9781.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 919626
+    },
+    {
+      "image_path": "images/IMG_9780.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons neutros baixo contraste fotografia composição dinâmica estilo profissional com elementos abstratos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9780.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 957088
+    },
+    {
+      "image_path": "images/IMG_9757.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem clara cores moderadas tons avermelhados alto contraste fotografia composição equilibrada estilo minimalista com linhas definidas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9757.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 834161
+    },
+    {
+      "image_path": "images/IMG_9743.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons neutros baixo contraste fotografia composição minimalista estilo moderno com elementos geométricos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9743.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 819001
+    },
+    {
+      "image_path": "images/IMG_9755.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros alto contraste fotografia composição minimalista estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9755.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1330834
+    },
+    {
+      "image_path": "images/IMG_9741.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros baixo contraste fotografia composição dinâmica estilo clássico com texturas suaves, capturada digitalmente",
+      "original_path": "../data/train/IMG_9741.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2318637
+    },
+    {
+      "image_path": "images/IMG_9769.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros contraste médio fotografia composição equilibrada estilo elegante com composição única, capturada digitalmente",
+      "original_path": "../data/train/IMG_9769.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1606302
+    },
+    {
+      "image_path": "images/IMG_9782.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem clara cores moderadas tons esverdeados alto contraste fotografia composição minimalista estilo elegante com composição única, capturada digitalmente",
+      "original_path": "../data/train/IMG_9782.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1402549
+    },
+    {
+      "image_path": "images/IMG_9783.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons azulados alto contraste fotografia composição dinâmica estilo contemporâneo com padrões complexos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9783.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1355426
+    },
+    {
+      "image_path": "images/IMG_9768.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas paleta de cores mista baixo contraste fotografia composição dinâmica estilo elegante com composição única, capturada digitalmente",
+      "original_path": "../data/train/IMG_9768.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1567073
+    },
+    {
+      "image_path": "images/IMG_9740.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons neutros alto contraste fotografia composição minimalista estilo clássico com texturas suaves, capturada digitalmente",
+      "original_path": "../data/train/IMG_9740.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1727185
+    },
+    {
+      "image_path": "images/IMG_9754.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores moderadas tons neutros baixo contraste fotografia composição equilibrada estilo moderno com elementos geométricos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9754.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1159758
+    },
+    {
+      "image_path": "images/IMG_9778.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros alto contraste fotografia composição equilibrada estilo moderno com elementos geométricos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9778.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 857817
+    },
+    {
+      "image_path": "images/IMG_9750.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem com brilho médio cores desaturadas tons esverdeados alto contraste fotografia composição dinâmica estilo contemporâneo com padrões complexos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9750.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1599104
+    },
+    {
+      "image_path": "images/IMG_9744.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros baixo contraste fotografia composição dinâmica estilo minimalista com linhas definidas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9744.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 259439
+    },
+    {
+      "image_path": "images/IMG_9787.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito escura cores moderadas tons azulados alto contraste fotografia composição equilibrada estilo moderno com elementos geométricos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9787.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 478776
+    },
+    {
+      "image_path": "images/IMG_9786.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons azulados baixo contraste fotografia composição dinâmica estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9786.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1411293
+    },
+    {
+      "image_path": "images/IMG_9745.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem clara cores desaturadas tons esverdeados alto contraste fotografia composição equilibrada estilo criativo com detalhes refinados, capturada digitalmente",
+      "original_path": "../data/train/IMG_9745.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1319256
+    },
+    {
+      "image_path": "images/IMG_9751.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem clara cores desaturadas tons azulados baixo contraste fotografia composição equilibrada estilo minimalista com linhas definidas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9751.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2313781
+    },
+    {
+      "image_path": "images/IMG_9779.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons avermelhados alto contraste fotografia composição minimalista estilo minimalista com linhas definidas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9779.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2451790
+    },
+    {
+      "image_path": "images/IMG_9747.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros baixo contraste fotografia composição dinâmica estilo criativo com detalhes refinados, capturada digitalmente",
+      "original_path": "../data/train/IMG_9747.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 821001
+    },
+    {
+      "image_path": "images/IMG_9753.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons avermelhados baixo contraste fotografia composição dinâmica estilo minimalista com linhas definidas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9753.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 942944
+    },
+    {
+      "image_path": "images/IMG_9784.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem clara cores moderadas tons azulados contraste médio fotografia composição equilibrada estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9784.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1386882
+    },
+    {
+      "image_path": "images/IMG_9785.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem com brilho médio cores desaturadas tons avermelhados baixo contraste fotografia composição minimalista estilo elegante com composição única, capturada digitalmente",
+      "original_path": "../data/train/IMG_9785.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2181697
+    },
+    {
+      "image_path": "images/IMG_9752.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons esverdeados alto contraste fotografia composição minimalista estilo criativo com detalhes refinados, capturada digitalmente",
+      "original_path": "../data/train/IMG_9752.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 972465
+    },
+    {
+      "image_path": "images/IMG_9746.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito escura cores desaturadas tons esverdeados baixo contraste fotografia composição minimalista estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9746.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1203003
+    },
+    {
+      "image_path": "images/IMG_9736.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons neutros baixo contraste fotografia composição equilibrada estilo contemporâneo com padrões complexos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9736.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1381827
+    },
+    {
+      "image_path": "images/IMG_9737.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem clara cores desaturadas tons esverdeados alto contraste fotografia composição minimalista estilo profissional com elementos abstratos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9737.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1334609
+    },
+    {
+      "image_path": "images/IMG_9739.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons esverdeados alto contraste fotografia composição equilibrada estilo profissional com elementos abstratos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9739.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1454401
+    },
+    {
+      "image_path": "images/IMG_9738.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons azulados baixo contraste fotografia composição dinâmica estilo moderno com elementos geométricos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9738.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1381731
+    },
+    {
+      "image_path": "images/IMG_9763.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons neutros baixo contraste fotografia composição equilibrada estilo profissional com elementos abstratos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9763.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1056189
+    },
+    {
+      "image_path": "images/IMG_9777.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores saturadas tons azulados alto contraste fotografia composição dinâmica estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9777.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1895412
+    },
+    {
+      "image_path": "images/IMG_9776.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros alto contraste fotografia composição minimalista estilo minimalista com linhas definidas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9776.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1134612
+    },
+    {
+      "image_path": "images/IMG_9762.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons neutros alto contraste fotografia composição dinâmica estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9762.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1295911
+    },
+    {
+      "image_path": "images/IMG_9774.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros alto contraste fotografia composição dinâmica estilo moderno com elementos geométricos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9774.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1915889
+    },
+    {
+      "image_path": "images/IMG_9760.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros baixo contraste fotografia composição equilibrada estilo moderno com elementos geométricos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9760.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1430854
+    },
+    {
+      "image_path": "images/IMG_9748.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons avermelhados alto contraste fotografia composição equilibrada estilo elegante com composição única, capturada digitalmente",
+      "original_path": "../data/train/IMG_9748.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1424562
+    },
+    {
+      "image_path": "images/IMG_9749.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons azulados alto contraste fotografia composição minimalista estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9749.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1576913
+    },
+    {
+      "image_path": "images/IMG_9761.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores moderadas tons avermelhados baixo contraste fotografia composição minimalista estilo profissional com elementos abstratos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9761.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 961496
+    },
+    {
+      "image_path": "images/IMG_9775.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores saturadas tons azulados alto contraste fotografia composição equilibrada estilo moderno com elementos geométricos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9775.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1388950
+    },
+    {
+      "image_path": "images/IMG_9771.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores muito saturadas tons neutros baixo contraste fotografia composição dinâmica estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9771.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1252071
+    },
+    {
+      "image_path": "images/IMG_9764.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros baixo contraste fotografia composição minimalista estilo profissional com elementos abstratos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9764.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 856537
+    },
+    {
+      "image_path": "images/IMG_9770.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros alto contraste fotografia composição minimalista estilo contemporâneo com padrões complexos, capturada digitalmente",
+      "original_path": "../data/train/IMG_9770.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2364868
+    },
+    {
+      "image_path": "images/IMG_9758.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons neutros contraste médio fotografia composição minimalista estilo clássico com texturas suaves, capturada digitalmente",
+      "original_path": "../data/train/IMG_9758.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 2366466
+    },
+    {
+      "image_path": "images/IMG_9766.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores moderadas tons azulados baixo contraste fotografia composição equilibrada estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9766.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 859430
+    },
+    {
+      "image_path": "images/IMG_9772.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito escura cores moderadas tons azulados baixo contraste fotografia composição equilibrada estilo elegante com composição única, capturada digitalmente",
+      "original_path": "../data/train/IMG_9772.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 742103
+    },
+    {
+      "image_path": "images/IMG_9773.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem muito clara cores desaturadas tons neutros baixo contraste fotografia composição minimalista estilo minimalista com linhas definidas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9773.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1554382
+    },
+    {
+      "image_path": "images/IMG_9767.PNG",
+      "caption": "Fotografia mostrando imagem quadrada resolução média imagem escura cores desaturadas tons neutros baixo contraste fotografia composição minimalista estilo artístico com formas orgânicas, capturada digitalmente",
+      "original_path": "../data/train/IMG_9767.PNG",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "file_size": 1235913
+    }
+  ]
+}

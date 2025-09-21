@@ -1,0 +1,48 @@
+# 🧛‍♂️ POSTØN LoRA Training Configuration
+
+# Model Configuration
+model:
+  pretrained_model_name_or_path: "stabilityai/stable-diffusion-xl-base-1.0"
+  resolution: 1024
+  mixed_precision: "fp16"
+
+# LoRA Configuration
+lora:
+  r: 16
+  alpha: 16
+  dropout: 0.1
+  train_text_encoder: true
+
+# Training Configuration
+training:
+  train_batch_size: 1
+  gradient_accumulation_steps: 2
+  learning_rate: 1e-4
+  lr_scheduler: "cosine"
+  lr_warmup_steps: 0
+  max_train_steps: 4000
+  checkpointing_steps: 1000
+  seed: 42
+
+# Data Configuration
+data:
+  train_data_dir: "../data"
+  validation_prompt: "Cartaz artístico com estética digital, contraste gráfico, e tipografia brutalista"
+  validation_epochs: 1
+
+# Output Configuration
+output:
+  output_dir: "../outputs"
+  report_to: "none"
+  tracker_project_name: "neø-designer"
+
+# Hugging Face Configuration
+huggingface:
+  push_to_hub: true
+  hub_model_id: "kauntdewn1/neø-designer-sdxl"
+  hub_token: "${HF_TOKEN}"
+
+# Optimization
+optimization:
+  use_8bit_adam: true
+  gradient_checkpointing: true

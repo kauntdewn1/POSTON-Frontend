@@ -1,0 +1,30 @@
+{
+  "model": {
+    "pretrained_model_name_or_path": "stabilityai/stable-diffusion-xl-base-1.0",
+    "resolution": 1024,
+    "mixed_precision": "fp16"
+  },
+  "lora": {
+    "r": 16,
+    "alpha": 16,
+    "dropout": 0.1,
+    "train_text_encoder": true
+  },
+  "training": {
+    "train_batch_size": 1,
+    "gradient_accumulation_steps": 2,
+    "learning_rate": 0.0001,
+    "lr_scheduler": "cosine",
+    "max_train_steps": 4000,
+    "checkpointing_steps": 1000,
+    "seed": 42
+  },
+  "data": {
+    "train_data_dir": "../prepared_data",
+    "validation_prompt": "Cartaz artístico com estética digital, contraste gráfico, e tipografia brutalista"
+  },
+  "output": {
+    "output_dir": "../outputs",
+    "tracker_project_name": "neø-designer"
+  }
+}
