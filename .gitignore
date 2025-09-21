@@ -41,3 +41,8 @@ Thumbs.db
 
 # Docker
 .dockerignore
+
+# Virtual environments
+lora_training/environment/
+lora_training/lora_env_clean/
+__pycache__/
