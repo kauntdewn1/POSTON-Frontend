@@ -1,5 +1,5 @@
 # 🧛‍♂️ POSTØN Space - Dockerfile com ComfyUI para Hugging Face
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 # Instalar dependências do sistema
 RUN apt-get update && apt-get install -y \
@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     libxrender-dev \
     libgomp1 \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
 # Instalar Node.js 18
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
@@ -26,8 +27,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Login no Hugging Face Docker Registry
-RUN echo "$HF_TOKEN" | docker login -u "$HF_USERNAME" --password-stdin
+# Remover login desnecessário do Docker Registry
 
 # Instalar ComfyUI
 RUN git clone https://github.com/comfyanonymous/ComfyUI.git comfyui
