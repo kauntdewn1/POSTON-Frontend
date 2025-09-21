@@ -32,4 +32,4 @@ Sistema completo de identidade visual com IA usando FastAPI e ComfyUI.
 - ComfyUI
 - Vue.js
 - PyTorch
-- LoRA
+- LoRA# POSTØN Space - Sun Sep 21 19:03:14 -03 2025
