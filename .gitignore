@@ -46,3 +46,6 @@ Thumbs.db
 lora_training/environment/
 lora_training/lora_env_clean/
 __pycache__/
+
+# Training data (backed up externally)
+lora_training/data/
