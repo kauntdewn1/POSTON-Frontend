@@ -246,8 +246,8 @@ async def criar_imagem(request: ImageRequest):
             )
 
         # 🎨 TENTAR COMFYUI PRIMEIRO (com modelo LoRA treinado)
-        comfyui_url = os.getenv("COMFYUI_URL")
-        if comfyui_url and comfyui_url != "http://localhost:8188":
+        comfyui_url = os.getenv("COMFYUI_URL", "http://localhost:8188")
+        if comfyui_url:
             try:
                 logger.info(f"🎨 Tentando ComfyUI com modelo LoRA para: {request.prompt}")
                 comfyui_client.server_url = comfyui_url
