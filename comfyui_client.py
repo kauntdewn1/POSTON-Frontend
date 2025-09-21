@@ -200,3 +200,18 @@ class ComfyUIClient:
         except Exception as e:
             logger.error(f"Erro ao gerar imagem com ComfyUI: {e}")
             raise
+
+    async def stop_generation(self):
+        """Para a geração em andamento no ComfyUI"""
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(f"{self.server_url}/interrupt") as response:
+                    if response.status == 200:
+                        logger.info("Geração interrompida com sucesso")
+                        return True
+                    else:
+                        logger.warning(f"Falha ao interromper geração: {response.status}")
+                        return False
+        except Exception as e:
+            logger.error(f"Erro ao parar geração: {e}")
+            return False

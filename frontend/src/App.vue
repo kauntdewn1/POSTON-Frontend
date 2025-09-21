@@ -24,6 +24,13 @@
       >
         {{ loadingImagem ? '🎨 Criando...' : 'Gerar Imagem' }}
       </button>
+      <button 
+        v-if="loading"
+        @click="pararGeracao" 
+        class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+      >
+        ⏹️ Parar
+      </button>
     </div>
 
     <!-- 🎨 POSTØN VISUAL SYSTEM - Seletor de Categoria -->
@@ -198,5 +205,26 @@ const criarImagem = async () => {
   }
 
   loadingImagem.value = false;
+};
+
+// 🛑 Função para parar geração
+const pararGeracao = async () => {
+  try {
+    const resultado = await apiPossuido("/api/stop", {});
+    
+    if (resultado.sucesso) {
+      // Parar todos os loadings
+      loadingPosts.value = false;
+      loadingImagem.value = false;
+      console.log("✅ Geração interrompida");
+    } else {
+      console.warn("⚠️ Falha ao parar geração:", resultado.erro);
+    }
+  } catch (err) {
+    console.error("💀 Erro ao parar geração:", err);
+    // Mesmo assim, parar os loadings localmente
+    loadingPosts.value = false;
+    loadingImagem.value = false;
+  }
 };
 </script>

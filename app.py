@@ -388,6 +388,20 @@ async def criar_imagem(request: ImageRequest):
         logger.error(f"💀 Erro fatal na materialização: {err}")
         raise HTTPException(status_code=500, detail="As sombras consumiram a materialização. Tente novamente.")
 
+# Endpoint para parar geração
+@app.post("/api/stop")
+async def stop_generation():
+    """Para a geração em andamento"""
+    try:
+        # Parar ComfyUI se estiver rodando
+        if comfyui_client:
+            await comfyui_client.stop_generation()
+        
+        return {"success": True, "message": "Geração interrompida"}
+    except Exception as e:
+        logger.error(f"Erro ao parar geração: {e}")
+        return {"success": False, "error": str(e)}
+
 # Rota raiz
 @app.get("/", response_class=HTMLResponse)
 async def root():
