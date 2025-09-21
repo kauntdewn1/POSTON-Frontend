@@ -57,7 +57,7 @@ RUN echo '{"enable_cors_header": "*"}' > comfyui/extra_model_paths.yaml
 # Build do frontend
 WORKDIR /app/frontend
 COPY frontend/package.json ./
-RUN rm -f package-lock.json && npm install --legacy-peer-deps --force
+RUN rm -rf node_modules package-lock.json && npm cache clean --force && npm install --legacy-peer-deps --force
 COPY frontend/ ./
 RUN npm run build
 
