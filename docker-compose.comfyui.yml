@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  comfyui:
+    build:
+      context: .
+      dockerfile: Dockerfile.comfyui
+    ports:
+      - "8188:8188"
+    volumes:
+      - ./models:/app/models
+      - ./input:/app/input
+      - ./output:/app/output
+    environment:
+      - CUDA_VISIBLE_DEVICES=""
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8188/system_stats"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  poston-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7860:7860"
+    environment:
+      - COMFYUI_URL=http://comfyui:8188
+      - HF_KEY=${HF_KEY}
+      - NODE_ENV=production
+    depends_on:
+      comfyui:
+        condition: service_healthy
+    restart: unless-stopped

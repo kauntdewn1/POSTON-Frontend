@@ -24,6 +24,7 @@ import base64
 import io
 from PIL import Image
 import random
+from comfyui_client import ComfyUIClient
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
@@ -53,6 +54,9 @@ VISUAL_MODELS = {
 
 # 🧠 CACHE INTELIGENTE - Reuso de prompts
 image_cache = {}
+
+# 🎨 COMFYUI CLIENT - Integração com ComfyUI
+comfyui_client = ComfyUIClient(os.getenv("COMFYUI_URL", "http://localhost:8188"))
 
 # 🔮 PROMPT TEMPLATES - Identidade visual consistente
 PROMPT_TEMPLATES = {
@@ -241,7 +245,28 @@ async def criar_imagem(request: ImageRequest):
                 category=request.category
             )
 
-        # Tentar API possuída do Hugging Face primeiro
+        # 🎨 TENTAR COMFYUI PRIMEIRO (com modelo LoRA treinado)
+        comfyui_url = os.getenv("COMFYUI_URL")
+        if comfyui_url and comfyui_url != "http://localhost:8188":
+            try:
+                logger.info(f"🎨 Tentando ComfyUI com modelo LoRA para: {request.prompt}")
+                comfyui_client.server_url = comfyui_url
+                image_data = await comfyui_client.generate_image(request.prompt, request.category)
+                
+                # 🧠 CACHE INTELIGENTE - Salvar no cache
+                image_cache[prompt_hash] = image_data
+                
+                logger.info("✅ Imagem gerada via ComfyUI com modelo LoRA")
+                return ImageResponse(
+                    image=image_data,
+                    cached=False,
+                    model="comfyui_lora",
+                    category=request.category
+                )
+            except Exception as e:
+                logger.warn(f"💀 ComfyUI falhou: {e}, tentando Hugging Face...")
+
+        # Tentar API possuída do Hugging Face como fallback
         hf_key = os.getenv("HF_KEY")
         if hf_key and hf_key != "seu_token_aqui":
             template = PROMPT_TEMPLATES.get(request.category, PROMPT_TEMPLATES["SOCIAL"])

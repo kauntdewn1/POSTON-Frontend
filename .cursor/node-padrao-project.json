@@ -1,0 +1,42 @@
+{
+  "projeto": "POSTON",
+  "descricao": "Sistema de geração de imagens com IA usando LoRA training",
+  "estrutura": {
+    "backend": "Python Flask (app.py)",
+    "frontend": "Vue.js + Vite + Tailwind CSS",
+    "ia_training": "LoRA training com PyTorch",
+    "deploy": {
+      "backend": "Hugging Face Spaces",
+      "frontend": "Vercel (repositório separado)"
+    }
+  },
+  "repositorios": {
+    "principal": "https://huggingface.co/protocoloneo/POSTON",
+    "frontend": "https://github.com/kauntdewn1/POSTON-Frontend"
+  },
+  "status_atual": {
+    "backend": "Deployado no Hugging Face Spaces",
+    "frontend": "Repositório criado no GitHub, pronto para Vercel",
+    "modelo_ia": "LoRA treinado e disponível",
+    "git_status": "Sincronizado e limpo"
+  },
+  "configuracoes_importantes": {
+    "git_lfs": "Configurado para arquivos grandes",
+    "filtros_git": "Removidos arquivos problemáticos do histórico",
+    "dependencias": "requirements.txt para Python, package.json para frontend"
+  },
+  "proximos_passos": {
+    "frontend": "Deploy na Vercel usando repositório POSTON-Frontend",
+    "configuracao_vercel": {
+      "framework": "Vite",
+      "build_command": "npm run build",
+      "output_directory": "dist",
+      "install_command": "npm install"
+    }
+  },
+  "observacoes": {
+    "arquitetura": "Estrutura protegida por contexto NEØ - não modificar pastas/arquivos",
+    "limpeza_realizada": "Removidos dados de treinamento antigos e bibliotecas Python do histórico",
+    "modelo_final": "LoRA weights disponíveis em lora_training/outputs/final/"
+  }
+}
