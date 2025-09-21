@@ -26,6 +26,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Login no Hugging Face Docker Registry
+RUN echo "$HF_TOKEN" | docker login -u "$HF_USERNAME" --password-stdin
+
 # Instalar ComfyUI
 RUN git clone https://github.com/comfyanonymous/ComfyUI.git comfyui
 
