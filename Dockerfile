@@ -20,12 +20,17 @@ RUN apt-get update && apt-get install -y \
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     apt-get install -y nodejs
 
+# Criar usuário não-root para segurança
+RUN useradd -m -u 1000 user
+USER user
+ENV PATH="/home/user/.local/bin:$PATH"
+
 # Configurar diretório de trabalho
 WORKDIR /app
 
 # Instalar dependências Python
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY --chown=user ./requirements.txt requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Remover login desnecessário do Docker Registry
 
@@ -36,8 +41,8 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git comfyui
 RUN cd comfyui && pip install -r requirements.txt
 
 # Copiar código da aplicação
-COPY app.py .
-COPY comfyui_client.py .
+COPY --chown=user app.py .
+COPY --chown=user comfyui_client.py .
 
 # Baixar modelo LoRA treinado
 RUN mkdir -p comfyui/models/loras
@@ -56,9 +61,9 @@ RUN echo '{"enable_cors_header": "*"}' > comfyui/extra_model_paths.yaml
 
 # Build do frontend
 WORKDIR /app/frontend
-COPY frontend/package.json ./
+COPY --chown=user frontend/package.json ./
 RUN npm install --legacy-peer-deps --force
-COPY frontend/ ./
+COPY --chown=user frontend/ ./
 RUN npm run build
 
 # Voltar para diretório raiz e copiar dist
@@ -68,7 +73,7 @@ RUN cp -r ./frontend/dist ./dist
 # Script de inicialização
 RUN echo '#!/bin/bash\n\
 cd comfyui && python main.py --listen 0.0.0.0 --port 8188 &\n\
-cd .. && python app.py' > start.sh
+cd .. && uvicorn app:app --host 0.0.0.0 --port 7860' > start.sh
 RUN chmod +x start.sh
 
 # Expor porta
