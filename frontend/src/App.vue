@@ -33,72 +33,33 @@
       </button>
     </div>
 
-    <!-- 🎨 POSTØN VISUAL SYSTEM - Seletor de Categoria -->
-    <div v-if="loadingImagem" class="mb-4 p-4 bg-purple-50 border border-purple-200 rounded">
-      <div class="flex items-center justify-center mb-2">
-        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-purple-600 mr-3"></div>
-        <span class="text-purple-700 font-semibold">POSTØN VISUAL SYSTEM</span>
-      </div>
-      <div class="text-center text-sm text-purple-600">
-        Gerando imagem com identidade visual consistente...
-      </div>
-    </div>
-
-    <div v-if="!loadingImagem" class="mb-4">
-      <label class="block text-sm font-medium text-gray-700 mb-2">Categoria Visual:</label>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Categoria:</label>
       <select 
         v-model="categoriaVisual" 
         class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
       >
-        <option value="SOCIAL">📱 Social - Minimalista e limpo</option>
-        <option value="ENGAGEMENT">🔥 Engagement - Vibrante e chamativo</option>
-        <option value="AUTHORITY">👑 Authority - Profissional e elegante</option>
-        <option value="CONVERSION">💰 Conversion - Persuasivo e impactante</option>
+        <option value="SOCIAL">Social - Minimalista</option>
+        <option value="ENGAGEMENT">Engagement - Vibrante</option>
+        <option value="AUTHORITY">Authority - Profissional</option>
+        <option value="CONVERSION">Conversion - Persuasivo</option>
       </select>
     </div>
 
-    <!-- 🎨 POSTØN VISUAL SYSTEM - Seletor de Categoria -->
-    <div v-if="loadingImagem" class="mb-4 p-4 bg-purple-50 border border-purple-200 rounded">
-      <div class="flex items-center justify-center mb-2">
-        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-purple-600 mr-3"></div>
-        <span class="text-purple-700 font-semibold">POSTØN VISUAL SYSTEM</span>
-      </div>
-      <div class="text-center text-sm text-purple-600">
-        Gerando imagem com identidade visual consistente...
-      </div>
-    </div>
-
-    <div v-if="!loadingImagem" class="mb-4">
-      <label class="block text-sm font-medium text-gray-700 mb-2">Categoria Visual:</label>
-      <select 
-        v-model="categoriaVisual" 
-        class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-      >
-        <option value="SOCIAL">📱 Social - Minimalista e limpo</option>
-        <option value="ENGAGEMENT">🔥 Engagement - Vibrante e chamativo</option>
-        <option value="AUTHORITY">👑 Authority - Profissional e elegante</option>
-        <option value="CONVERSION">💰 Conversion - Persuasivo e impactante</option>
-      </select>
-    </div>
-
-    <!-- 💀 Estado de erro controlado -->
+    <!-- Estado de erro -->
     <div v-if="erro" class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-      <div class="flex items-center">
-        <span class="text-lg mr-2">⚠️</span>
-        <div>
-          <strong>Ops! Algo deu errado:</strong>
-          <p class="mt-1">{{ erro }}</p>
-          <button 
-            @click="limparErro" 
-            class="mt-2 text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-          >
-            Tentar novamente
-          </button>
-        </div>
+      <div class="flex items-center justify-between">
+        <span>{{ erro }}</span>
+        <button 
+          @click="limparErro" 
+          class="text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+        >
+          Limpar
+        </button>
       </div>
     </div>
 
-    <!-- 🔮 Loading states -->
+    <!-- Loading state -->
     <div v-if="loading" class="mb-4 p-4 bg-blue-50 border border-blue-200 rounded">
       <div class="flex items-center justify-center">
         <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mr-3"></div>
@@ -120,9 +81,9 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import { apiPossuido, obterMensagemEnganosa } from './utils/apiWrapper.js';
+import { apiCall, getLoadingMessage } from './utils/apiWrapper.js';
 
-// 🧛‍♂️ Estados possuídos - controle total sobre a interface
+// Estados da aplicação
 const prompt = ref("");
 const posts = ref("");
 const imagem = ref("");
@@ -131,98 +92,75 @@ const loadingPosts = ref(false);
 const loadingImagem = ref(false);
 const categoriaVisual = ref("SOCIAL");
 
-// Estados computados para controle fino
+// Estados computados
 const loading = computed(() => loadingPosts.value || loadingImagem.value);
 const mensagemLoading = computed(() => {
   if (loadingPosts.value || loadingImagem.value) {
-    // 🌀 SELO 2: Mensagem enganosa para mascarar processamento
-    return obterMensagemEnganosa();
+    return getLoadingMessage();
   }
   return "";
 });
 
-// 💀 Limpar erros e dar esperança falsa ao usuário
+// Limpar erros
 const limparErro = () => {
   erro.value = "";
   posts.value = "";
   imagem.value = "";
 };
 
-// 🔮 Função possuída para posts
+// Função para gerar posts
 const criarPosts = async () => {
   if (!prompt.value.trim()) {
-    erro.value = "Digite algo para invocar os posts das trevas...";
+    erro.value = "Digite um prompt para gerar posts";
     return;
   }
 
   limparErro();
   loadingPosts.value = true;
 
-  const resultado = await apiPossuido("/api/posts", { prompt: prompt.value });
+  const resultado = await apiCall("/api/posts", { prompt: prompt.value });
 
-  if (resultado.sucesso) {
+  if (resultado.success) {
     posts.value = resultado.data.result;
-    console.log("✅ Posts invocados com sucesso");
   } else {
-    // 🌀 SELO 2: Transformar erro em experiência premium
-    erro.value = "✨ Geramos algo especial para você com nossos algoritmos exclusivos!";
-    console.warn("👹 Falha na invocação:", resultado.erro);
+    erro.value = resultado.error;
   }
 
   loadingPosts.value = false;
 };
 
-// 🎨 Função possuída para imagens - POSTØN VISUAL SYSTEM
+// Função para gerar imagens
 const criarImagem = async () => {
   if (!prompt.value.trim()) {
-    erro.value = "Digite algo para materializar imagem das sombras...";
+    erro.value = "Digite um prompt para gerar imagem";
     return;
   }
 
   limparErro();
   loadingImagem.value = true;
 
-  const resultado = await apiPossuido("/api/image", { 
+  const resultado = await apiCall("/api/image", { 
     prompt: prompt.value,
     category: categoriaVisual.value
   });
 
-  if (resultado.sucesso) {
+  if (resultado.success) {
     imagem.value = resultado.data.image;
-    console.log("✅ Imagem materializada das trevas com categoria:", categoriaVisual.value);
-    
-    // Mostrar informações do modelo usado
-    if (resultado.data.model) {
-      console.log("🎨 Modelo usado:", resultado.data.model);
-    }
-    if (resultado.data.cached) {
-      console.log("🧠 Imagem reutilizada do cache");
-    }
   } else {
-    // 🌀 SELO 2: Transformar erro em experiência artística premium
-    erro.value = "🎨 Criamos uma obra de arte exclusiva com nossa tecnologia proprietária!";
-    console.warn("👹 Falha na materialização:", resultado.erro);
+    erro.value = resultado.error;
   }
 
   loadingImagem.value = false;
 };
 
-// 🛑 Função para parar geração
+// Função para parar geração
 const pararGeracao = async () => {
   try {
-    const resultado = await apiPossuido("/api/stop", {});
-    
-    if (resultado.sucesso) {
-      // Parar todos os loadings
-      loadingPosts.value = false;
-      loadingImagem.value = false;
-      console.log("✅ Geração interrompida");
-    } else {
-      console.warn("⚠️ Falha ao parar geração:", resultado.erro);
-    }
+    await apiCall("/api/stop", {});
   } catch (err) {
-    console.error("💀 Erro ao parar geração:", err);
-    // Mesmo assim, parar os loadings localmente
+    console.error("Erro ao parar geração:", err);
+  } finally {
+    // Sempre parar os loadings
     loadingPosts.value = false;
     loadingImagem.value = false;
   }

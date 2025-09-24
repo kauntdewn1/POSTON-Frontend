@@ -1,21 +1,13 @@
 {
   "name": "poston-space",
   "version": "1.0.0",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
     "build": "cd frontend && npm install --include=dev && npm run build",
-    "docker:dev": "docker-compose up --build"
+    "docker:dev": "docker-compose up --build",
+    "start:api": "python app.py",
+    "dev:api": "uvicorn app:app --host 0.0.0.0 --port 7860 --reload"
   },
   "dependencies": {
-    "dotenv": "^16.6.1",
-    "express": "^4.21.2",
-    "fastapi": "^0.0.8",
-    "node-fetch": "^2.7.0",
-    "uvicorn": "^0.0.1-security"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
+    "dotenv": "^16.6.1"
   }
 }

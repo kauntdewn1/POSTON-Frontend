@@ -11,9 +11,11 @@ services:
       - "5173:5173"  # Porta do Vite dev server
     environment:
       - HF_KEY=${HF_KEY}
+      - COMFYUI_URL=${COMFYUI_URL:-http://localhost:8188}
     volumes:
-      - ./server.js:/app/server.js
+      - ./app.py:/app/app.py
+      - ./comfyui_client.py:/app/comfyui_client.py
       - ./frontend:/app/frontend
       - ./dist:/app/dist
       - /app/node_modules
-    command: sh -c "mkdir -p /app/dist && cd frontend && npm install && npm run dev & nodemon server.js"
+    command: sh -c "mkdir -p /app/dist && cd frontend && npm install && npm run dev & uvicorn app:app --host 0.0.0.0 --port 7860 --reload"
